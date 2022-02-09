@@ -33,7 +33,20 @@ def nonInteractive():
     fh = open('file.txt', "r")
     content = fh.read()
     result = content.split(' ')
-    quadratic(int(result[0]), int(result[1]), int(result[2]))
+    finalValues = []
+    k = 0
+    while k < len(result):
+        if result[k].lstrip("-").isdigit() or result[k].isdigit():
+            finalValues.append(int(result[k]))
+            k += 1
+        else: 
+            print ('Invalid value')
+            return
+    
+    if len(finalValues) == 3:
+        quadratic(finalValues[0], finalValues[1], finalValues[2])
+    else:
+        print('Invalid input')
 
 
 def quadratic(a, b, c):
